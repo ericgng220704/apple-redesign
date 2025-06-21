@@ -24,7 +24,7 @@ export default function GetToKnownSection({
     <section className="py-24 hide-scrollbar">
       <TextReveal animateOnScroll={true}>
         <div>
-          <h2 className="text-5xl font-semibold mb-16 pl-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-16 pl-12">
             Get to know {title}.
           </h2>
         </div>

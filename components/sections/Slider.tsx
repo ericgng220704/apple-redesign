@@ -66,30 +66,30 @@ export const FeatureSlider: FC<FeatureSliderProps> = ({ features }) => {
             <MorphingDialogTrigger>
               <div
                 className={cn(
-                  "min-w-[280px] w-[400px] h-[700px] flex-shrink-0 rounded-3xl relative flex flex-col justify-between transition-all group overflow-hidden cursor-pointer",
+                  "w-[270px] h-[475px] md:w-[350px] md:h-[700px]  lg:w-[400px] lg:h-[700px] flex-shrink-0 rounded-3xl relative flex flex-col justify-between transition-all group overflow-hidden cursor-pointer",
                   feature.theme === "dark" ? "text-white" : "text-black"
                 )}
               >
                 <TextReveal animateOnScroll={true}>
                   <div className="p-6 z-10 text-left self-start w-full">
-                    <div className="text-lg font-semibold opacity-80 mb-1 !text-left">
+                    <div className="text-sm lg:text-lg font-semibold opacity-80 mb-1 !text-left">
                       <p>{feature.sectionTitle}</p>
                     </div>
-                    <div className="text-[1.65rem] opacity-90 font-bold mb-4 pr-10">
+                    <div className="text-xl lg:text-[1.65rem] opacity-90 font-bold mb-4 pr-10">
                       <h3>{feature.headline}</h3>
                     </div>
                   </div>
                 </TextReveal>
                 <div
                   className={cn(
-                    "absolute bottom-4 right-4 bg-black/40 text-white rounded-full w-10 h-10 flex items-center justify-center transition group-hover:bg-black/70 z-10",
+                    "absolute bottom-4 right-4 bg-black/40 text-white rounded-full md:size-10 size-7 flex items-center justify-center transition group-hover:bg-black/70 z-10",
                     feature.theme === "dark"
                       ? "bg-white/80 text-black group-hover:bg-white"
                       : "bg-black/80 text-white group-hover:bg-black"
                   )}
                   aria-label="Learn more"
                 >
-                  <Plus className="w-6 h-6" />
+                  <Plus className="size-4 md:w-6 md:h-6" />
                 </div>
                 <img
                   src={feature.image}
@@ -100,13 +100,13 @@ export const FeatureSlider: FC<FeatureSliderProps> = ({ features }) => {
               </div>
             </MorphingDialogTrigger>
             <MorphingDialogContainer className="overflow-y-auto scrollbar-hide">
-              <MorphingDialogContent className="relative w-[85%] h-[93%] bg-white rounded-t-3xl overflow-y-auto scrollbar-hide">
-                <div className="min-h-full flex flex-col py-16 px-20">
+              <MorphingDialogContent className="relative size-full sm:w-[90%] sm:h-[95%] lg:w-[85%] lg:h-[93%] bg-white rounded-t-3xl overflow-y-auto scrollbar-hide">
+                <div className="min-h-full flex flex-col py-16 px-8 sm:px-14 md:px-20">
                   <div className="flex flex-col gap-2 mb-14">
-                    <span className="text-xl font-semibold">
+                    <span className="text-lg md:text-xl font-semibold">
                       {feature.sectionTitle}
                     </span>{" "}
-                    <h3 className="text-[3.5rem] font-semibold pr-[40%] leading-16">
+                    <h3 className="text-3xl md:text-4xl xl:text-[3.5rem] font-semibold xl:pr-[40%] xl:leading-16">
                       {feature.headline}
                     </h3>
                   </div>

@@ -14,7 +14,7 @@ export default function FeatureDetailBox({
   // Responsive layout classes for each text position
   let containerClass = "";
   let textClass =
-    "text-xl md:text-[1.6rem] font-semibold text-[#6e6e73] leading-8";
+    "text-2xl md:text-3xl xl:text-[1.6rem] lg:min-w-[380px] font-semibold text-[#6e6e73] xl:leading-8";
   let imageClass = "";
 
   if (textPosition === "top") {
@@ -23,14 +23,16 @@ export default function FeatureDetailBox({
     textClass += " !px-[10%] pb-6";
   } else if (textPosition === "left") {
     containerClass =
-      "flex flex-row items-center  bg-[#f5f5f7] rounded-4xl overflow-hidden";
-    textClass += " text-left max-w-[40%] pl-[5%]";
-    imageClass += "mx-[5%]";
+      "flex flex-col lg:flex-row items-center  bg-[#f5f5f7] rounded-4xl overflow-hidden";
+    textClass +=
+      " text-left lg:max-w-[40%] px-[10%] pb-6 lg:pb-0 pt-4 md:pt-8 lg:pr-0 lg:pt-0 lg:pl-[5%]";
+    imageClass += "xl:mx-[5%]";
   } else if (textPosition === "right") {
     containerClass =
-      "flex flex-row-reverse items-center  bg-[#f5f5f7] rounded-4xl overflow-hidden";
-    textClass += " text-left max-w-[40%] pr-[5%]";
-    imageClass += "mx-[5%]";
+      "flex flex-col lg:flex-row-reverse items-center  bg-[#f5f5f7] rounded-4xl overflow-hidden";
+    textClass +=
+      " text-left lg:max-w-[40%] px-[10%] pb-6 lg:pb-0 pt-4 md:pt-8 lg:pr-0 lg:pt-0 lg:pr-[5%]";
+    imageClass += "xl:mx-[5%]";
   }
 
   return (

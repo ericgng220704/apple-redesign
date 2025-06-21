@@ -1,18 +1,20 @@
 "use client";
 
-import GetToKnowIphoneSection from "@/components/sections/GetToKnow";
 import TextReveal from "@/components/TextReveal";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useEffect } from "react";
-import { FaApple, FaShoppingCart } from "react-icons/fa";
+import { FaApple, FaSearch, FaShoppingCart } from "react-icons/fa";
 import { usePreloader } from "@/app/context/PreloaderContext";
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import { TiFlash } from "react-icons/ti";
+import { CiMenuFries } from "react-icons/ci";
 import { FiArrowDownCircle } from "react-icons/fi";
 import { Magnetic } from "../motion-primitives/magnetic";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import MobileMenuButton from "../MobileMenuButton";
 
 interface HeroProps {
   title: string;
@@ -52,8 +54,10 @@ export default function Hero({
           <div className="absolute left-0 top-0">
             <TextReveal animateOnScroll={false} delay={show ? 7.3 : 0}>
               <div className="flex items-center gap-1 !pl-8 !pt-4">
-                <FaApple className="size-8" />
-                <span className="text-2xl font-semibold">Apple</span>
+                <FaApple className="size-6 sm:size-8" />
+                <span className="text-lg [@media(min-width:500px)]:text-2xl font-semibold">
+                  Apple
+                </span>
               </div>
             </TextReveal>
           </div>
@@ -62,18 +66,38 @@ export default function Hero({
               <Input
                 type="search"
                 placeholder="Search.."
-                className="!pl-2 max-w-[100px] !text-xs rounded-full h-8 shadow-none"
+                className="hidden [@media(min-width:500px)]:block !pl-2 max-w-[100px] !text-xs rounded-full h-8 shadow-none"
               />
-              <Avatar className="cursor-pointer">
+              <Popover>
+                <PopoverTrigger>
+                  <div className="block [@media(min-width:500px)]:hidden p-[0.4rem] [@media(min-width:500px)]:p-2 border border-black/20 rounded-full cursor-pointer">
+                    <FaSearch className="size-3 [@media(min-width:500px)]:size-4 text-gray-800" />
+                  </div>
+                </PopoverTrigger>
+                <PopoverContent className="!w-[15rem] mr-7 overflow-hidden p-0">
+                  <Input
+                    type="search"
+                    placeholder="Search.."
+                    className="pl-2 w-full !text-xs h-8 border-0 outline-0 ring-0"
+                  />
+                </PopoverContent>
+              </Popover>
+
+              <div className="p-[0.4rem] [@media(min-width:500px)]:p-2 border border-black/20 rounded-full cursor-pointer">
+                <FaShoppingCart className="size-3 [@media(min-width:500px)]:size-4 text-gray-800" />
+              </div>
+              <Avatar className="cursor-pointer size-6 [@media(min-width:500px)]:size-8 ">
                 <AvatarImage
                   src="https://github.com/shadcn.png"
                   alt="@shadcn"
+                  className=""
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
-              <div className="!p-2 border border-black/20 rounded-full cursor-pointer">
-                <FaShoppingCart className="size-4 text-gray-800" />
-              </div>
+              {/* <div className="block [@media(min-width:500px)]:hidden  cursor-pointer">
+                <CiMenuFries className="size-5 [@media(min-width:500px)]:size-4 text-gray-800" />
+              </div> */}
+              <MobileMenuButton />
             </div>
           </div>
           <nav className="main-nav">
