@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "tailwind-scrollbar-hide/v4";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -150,6 +151,14 @@ h1 {
   @apply text-sm font-semibold px-2 sm:px-3 border border-black rounded-full;
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 @media (max-width: 1000px) {
   h1 {
     @apply text-[2.5rem];
@@ -161,8 +170,8 @@ h1 {
 
   .card {
     width: 90%;
-    height: 50%;
-    @apply !-translate-y-[17rem];
+    height: 65%;
+    @apply !-translate-y-[17rem] -z-20;
   }
 
   .main-nav {

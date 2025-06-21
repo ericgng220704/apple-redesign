@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  features  Feature[]
+  products  Product[]
+  whyBuy    WhyBuy[]
+}
+
+model Feature {
+  id           Int      @id @default(autoincrement())
+  category     Category @relation(fields: [categoryId], references: [id])
+  categoryId   Int
+  sectionTitle String
+  headline     String
+  image        String
+  theme        String
+  description  FeatureDetail[]
+}
+
+model FeatureDetail {
+  id           Int      @id @default(autoincrement())
+  feature      Feature  @relation(fields: [featureId], references: [id])
+  featureId    Int
+  text         String
+  textBreak    Boolean
+  textPosition String
+  image        String
+}
+
+model Product {
+  id           Int      @id @default(autoincrement())
+  category     Category @relation(fields: [categoryId], references: [id])
+  categoryId   Int
+  name         String
+  description  String
+  price        String
+  variants     String[]
+  feature      ProductFeature[]
+}
+
+model ProductFeature {
+  id          String   @id @default(uuid())
+  product     Product  @relation(fields: [productId], references: [id])
+  productId   Int
+  name        String
+  description String
+  icon        String
+}
+
+model WhyBuy {
+  id           Int      @id @default(autoincrement())
+  category     Category @relation(fields: [categoryId], references: [id])
+  categoryId   Int
+  title        String
+  description  String
+  icon         String
+}
